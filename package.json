@@ -1,7 +1,7 @@
 {
   "name": "firebot-stardew",
   "scriptOutputName": "firebot-stardew",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "description": "A basic Firebot plugin for interacting with Stardew Valley via the Stardew Web API mod.",
   "main": "",
   "scripts": {
