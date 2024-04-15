@@ -1,7 +1,7 @@
 name: Build Plugin and Draft Release
 
 env:
-  plugin-name: firebot-stardew
+  plugin_name: firebot-stardew
 
 on:
   workflow_dispatch:
