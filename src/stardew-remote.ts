@@ -470,7 +470,7 @@ export async function knockOut(): Promise<ActionResult> {
 
 export async function giveMoney(amount: number): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/action/giveMoney?amount=${amount}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/action/giveMoney/${amount}`))).data;
     } catch (error) {
         logger.error("Error giving/taking Stardew player money", error.message);
     }
@@ -478,7 +478,7 @@ export async function giveMoney(amount: number): Promise<ActionResult> {
 
 export async function giveItem(itemName: string, amount: number, quality: number): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/action/giveMoney?itemName=${itemName}&amount=${amount}&quality=${quality}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/action/giveItem/name/${itemName}?amount=${amount}&quality=${quality}`))).data;
     } catch (error) {
         logger.error("Error giving Stardew player item", error.message);
     }
@@ -486,7 +486,7 @@ export async function giveItem(itemName: string, amount: number, quality: number
 
 export async function warpPlayer(location: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/action/warpPlayer?location=${location}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/action/warpPlayer/${location}`))).data;
     } catch (error) {
         logger.error("Error warping Stardew player", error.message);
     }
@@ -494,7 +494,7 @@ export async function warpPlayer(location: string): Promise<ActionResult> {
 
 export async function petFarmAnimal(name: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/action/petFarmAnimal?name=${name}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/action/petFarmAnimal/${name}`))).data;
     } catch (error) {
         logger.error("Error petting Stardew farm animal", error.message);
     }
@@ -510,7 +510,7 @@ export async function getAllNPCs(): Promise<NPCStub[]> {
 
 export async function getNPCByName(name: string): Promise<NPCInfo> {
     try {
-        return (await axios.get<NPCInfo>(getUrl(`/npcs/name?name=${name}`))).data;
+        return (await axios.get<NPCInfo>(getUrl(`/npcs/name/${name}`))).data;
     } catch (error) {
         logger.error("Error getting Stardew NPC by name", error.message);
     }
