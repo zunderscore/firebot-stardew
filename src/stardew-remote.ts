@@ -419,7 +419,7 @@ export async function getPlayerInfo(): Promise<PlayerInfo> {
 
 export async function refillEnergy(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/refillEnergy`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/refillEnergy`))).data;
     } catch (error) {
         logger.error("Error refilling Stardew player energy", error.message);
     }
@@ -427,7 +427,7 @@ export async function refillEnergy(): Promise<ActionResult> {
 
 export async function passOut(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/passOut`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/passOut`))).data;
     } catch (error) {
         logger.error("Error causing Stardew player to pass out", error.message);
     }
@@ -435,7 +435,7 @@ export async function passOut(): Promise<ActionResult> {
 
 export async function fullyHeal(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/fullyHeal`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/fullyHeal`))).data;
     } catch (error) {
         logger.error("Error refilling Stardew player health", error.message);
     }
@@ -443,7 +443,7 @@ export async function fullyHeal(): Promise<ActionResult> {
 
 export async function knockOut(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/knockOut`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/knockOut`))).data;
     } catch (error) {
         logger.error("Error knocking Stardew player out", error.message);
     }
@@ -451,7 +451,7 @@ export async function knockOut(): Promise<ActionResult> {
 
 export async function giveMoney(amount: number): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/giveMoney/${amount}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/giveMoney/${amount}`))).data;
     } catch (error) {
         logger.error("Error giving/taking Stardew player money", error.message);
     }
@@ -459,7 +459,7 @@ export async function giveMoney(amount: number): Promise<ActionResult> {
 
 export async function giveItem(itemName: string, amount: number, quality: number): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/giveItem/name/${itemName}?amount=${amount}&quality=${quality}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/giveItem/name/${itemName}?amount=${amount}&quality=${quality}`))).data;
     } catch (error) {
         logger.error("Error giving Stardew player item", error.message);
     }
@@ -467,7 +467,7 @@ export async function giveItem(itemName: string, amount: number, quality: number
 
 export async function warpPlayer(location: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/warpPlayer/${location}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/warp/${location}`))).data;
     } catch (error) {
         logger.error("Error warping Stardew player", error.message);
     }
@@ -475,7 +475,7 @@ export async function warpPlayer(location: string): Promise<ActionResult> {
 
 export async function petFarmAnimal(name: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/action/petFarmAnimal/${name}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/petFarmAnimal/${name}`))).data;
     } catch (error) {
         logger.error("Error petting Stardew farm animal", error.message);
     }
@@ -483,7 +483,7 @@ export async function petFarmAnimal(name: string): Promise<ActionResult> {
 
 export async function showHUDMessage(message: string, type = 0): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/action/showHudMessage?message=${message}&type=${type}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/actions/showHudMessage?message=${message}&type=${type}`))).data;
     } catch (error) {
         logger.error("Error showing Stardew HUD message", error.message);
     }
@@ -491,7 +491,7 @@ export async function showHUDMessage(message: string, type = 0): Promise<ActionR
 
 export async function showHUDMessageForItemName(message: string, itemName: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/action/showHudMessage/item?message=${message}&itemName=${itemName}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/actions/showHudMessage/item?message=${message}&itemName=${itemName}`))).data;
     } catch (error) {
         logger.error("Error showing Stardew HUD item message", error.message);
     }
@@ -499,7 +499,7 @@ export async function showHUDMessageForItemName(message: string, itemName: strin
 
 export async function showLargeHUDMessage(message: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/action/showHudMessage/large?message=${message}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/actions/showHudMessage/large?message=${message}`))).data;
     } catch (error) {
         logger.error("Error showing Stardew large HUD message", error.message);
     }
@@ -507,7 +507,7 @@ export async function showLargeHUDMessage(message: string): Promise<ActionResult
 
 export async function showChatMessage(message: string, type = 0): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/action/showChatMessage?message=${message}&type=${type}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/ui/actions/showChatMessage?message=${message}&type=${type}`))).data;
     } catch (error) {
         logger.error("Error showing Stardew chat message", error.message);
     }
