@@ -45,6 +45,7 @@ import { GiveMoneyEffectType } from "./effects/give-money";
 import { GiveItemEffectType } from "./effects/give-item";
 import { WarpPlayerEffectType } from "./effects/warp-player";
 import { PetFarmAnimalEffectType } from "./effects/pet-farm-animal";
+import { PlaySoundEffectType } from "./effects/play-sound";
 
 const packageInfo = require("../package.json");
 
@@ -182,6 +183,7 @@ const script: Firebot.CustomScript = {
         effectManager.registerEffect(GiveItemEffectType);
         effectManager.registerEffect(WarpPlayerEffectType);
         effectManager.registerEffect(PetFarmAnimalEffectType);
+        effectManager.registerEffect(PlaySoundEffectType);
 
         logger.info("Stardew Valley integration loaded");
     },
