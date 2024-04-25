@@ -12,7 +12,7 @@ export const PlaySoundEffectType: Effects.EffectType<{
         categories: ["fun", "integrations"]
     },
     optionsTemplate: `
-        <eos-container header="Location">
+        <eos-container header="Sound">
             <firebot-input
                 model="effect.name"
                 placeholder-text="Enter sound name"
