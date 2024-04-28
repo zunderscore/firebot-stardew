@@ -11,10 +11,12 @@ export type Date = {
 export type DayInfo = {
     date: Date;
     weather: string;
+    festival?: string | undefined;
     birthdays: NPCStub[];
 };
 
 export type WorldInfo = Partial<{
     today: DayInfo;
     farmName: string;
+    currentMusicTrack?: string | undefined;
 }>;

@@ -1,6 +1,7 @@
-import { Date } from "./info";
 import { BasicItem } from "./item";
 import { NPCStub } from "./npc";
+import { Achievement } from "./raw-data";
+import { Date } from "./world";
 
 export type BasicSkill = {
     id: number;
@@ -11,6 +12,23 @@ export type BasicSkill = {
         name: string;
         description: string;
     }[]
+};
+
+export type Quest = {
+    title: string;
+    description: string;
+    hasReward: boolean;
+    rewardDescription?: string | undefined;
+    hasMoneyReward: boolean;
+    moneyReward?: number | undefined;
+    currentObjective: string;
+    isTimedQuest: boolean;
+    daysLeft?: number | undefined;
+};
+
+export type PlayerAchievement = Achievement & {
+    hasPlayerUnlocked: boolean;
+    canPlayerSeeDetails: boolean;
 };
 
 export type Relationship = {
@@ -50,5 +68,7 @@ export type PlayerInfo = {
         leftRing: BasicItem;
     };
     skills: BasicSkill[];
-    relationships: Relationship[]
+    quests: Quest[];
+    achievements: PlayerAchievement[];
+    relationships: Relationship[];
 };

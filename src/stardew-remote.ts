@@ -26,9 +26,9 @@ import {
 } from "./constants";
 
 import { GameEvent, ActionResult } from "./types/events";
-import { WorldInfo } from "./types/info";
 import { NPCStub, NPCInfo, PetInfo } from "./types/npc";
 import { PlayerInfo } from "./types/player";
+import { WorldInfo } from "./types/world";
 
 
 let logger: ScriptModules["logger"];
@@ -409,7 +409,7 @@ export async function getAllPets(): Promise<PetInfo[]> {
 
 export async function getPlayerInfo(): Promise<PlayerInfo> {
     try {
-        return (await axios.get<PlayerInfo>(getUrl("/api/v1/player"))).data;
+        return (await axios.get<PlayerInfo>(getUrl("/api/v1/players/main"))).data;
     } catch (error) {
         logger.error("Error getting Stardew player info", error.message);
     }
@@ -419,7 +419,7 @@ export async function getPlayerInfo(): Promise<PlayerInfo> {
 
 export async function refillEnergy(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/refillEnergy`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/refillEnergy`))).data;
     } catch (error) {
         logger.error("Error refilling Stardew player energy", error.message);
     }
@@ -427,7 +427,7 @@ export async function refillEnergy(): Promise<ActionResult> {
 
 export async function passOut(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/passOut`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/passOut`))).data;
     } catch (error) {
         logger.error("Error causing Stardew player to pass out", error.message);
     }
@@ -435,7 +435,7 @@ export async function passOut(): Promise<ActionResult> {
 
 export async function fullyHeal(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/fullyHeal`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/fullyHeal`))).data;
     } catch (error) {
         logger.error("Error refilling Stardew player health", error.message);
     }
@@ -443,7 +443,7 @@ export async function fullyHeal(): Promise<ActionResult> {
 
 export async function knockOut(): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/knockOut`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/knockOut`))).data;
     } catch (error) {
         logger.error("Error knocking Stardew player out", error.message);
     }
@@ -451,7 +451,7 @@ export async function knockOut(): Promise<ActionResult> {
 
 export async function giveMoney(amount: number): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/giveMoney/${amount}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/giveMoney/${amount}`))).data;
     } catch (error) {
         logger.error("Error giving/taking Stardew player money", error.message);
     }
@@ -459,7 +459,7 @@ export async function giveMoney(amount: number): Promise<ActionResult> {
 
 export async function giveItem(itemName: string, amount: number, quality: number): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/giveItem/name/${itemName}?amount=${amount}&quality=${quality}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/giveItem/name/${itemName}?amount=${amount}&quality=${quality}`))).data;
     } catch (error) {
         logger.error("Error giving Stardew player item", error.message);
     }
@@ -467,7 +467,7 @@ export async function giveItem(itemName: string, amount: number, quality: number
 
 export async function warpPlayer(location: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/warp/${location}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/warp/${location}`))).data;
     } catch (error) {
         logger.error("Error warping Stardew player", error.message);
     }
@@ -475,7 +475,7 @@ export async function warpPlayer(location: string): Promise<ActionResult> {
 
 export async function petFarmAnimal(name: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/player/actions/petFarmAnimal/${name}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/petFarmAnimal/${name}`))).data;
     } catch (error) {
         logger.error("Error petting Stardew farm animal", error.message);
     }
@@ -528,6 +528,26 @@ export async function playSound(name: string): Promise<ActionResult> {
         return (await axios.get<ActionResult>(getUrl(`/api/v1/world/actions/playSound/${name}`))).data;
     } catch (error) {
         logger.error("Error playing Stardew sound", error.message);
+    }
+
+    return null;
+}
+
+export async function playMusicTrack(name: string): Promise<ActionResult> {
+    try {
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/world/actions/playMusicTrack/${name}`))).data;
+    } catch (error) {
+        logger.error("Error playing Stardew music track", error.message);
+    }
+
+    return null;
+}
+
+export async function stopMusicTrack(): Promise<ActionResult> {
+    try {
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/world/actions/stopMusicTrack`))).data;
+    } catch (error) {
+        logger.error("Error stopping Stardew music track", error.message);
     }
 
     return null;

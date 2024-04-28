@@ -1,6 +1,6 @@
-import { DayInfo } from "./info";
 import { BasicItem } from "./item";
 import { NPCStub } from "./npc";
+import { DayInfo } from "./world";
 
 export interface SaveLoadedEvent {
     event: "SaveLoaded";
