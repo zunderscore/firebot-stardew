@@ -467,7 +467,7 @@ export async function giveItem(itemName: string, amount: number, quality: number
 
 export async function warpPlayer(location: string): Promise<ActionResult> {
     try {
-        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/warp/${location}`))).data;
+        return (await axios.get<ActionResult>(getUrl(`/api/v1/players/main/actions/warpPlayer/${location}`))).data;
     } catch (error) {
         logger.error("Error warping Stardew player", error.message);
     }
